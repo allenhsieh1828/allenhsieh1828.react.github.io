@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]  # 當程式碼推送到 main 分支時觸發
+    branches: [main]
 
 permissions:
   contents: read
@@ -12,6 +12,12 @@ permissions:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    
+    # 這裡告訴 GitHub 所有的指令都要進入 my-web 資料夾執行
+    defaults:
+      run:
+        working-directory: ./my-web
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,6 +27,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+          # 指定子資料夾內的 lock 檔案來進行快取優化
+          cache-dependency-path: './my-web/package-lock.json'
 
       - name: Install dependencies
         run: npm install
@@ -34,8 +42,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite 預設輸出資料夾是 dist，如果是其他框架請改為對應資料夾
-          path: './dist'
+          # 這裡也要指向 my-web 裡面的產出資料夾
+          path: './my-web/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
