@@ -1,0 +1,239 @@
+/* App.css */
+:root {
+  --primary-bg: #0d0216;
+  --accent-gold: #c9a063;
+  --spotify-green: #2ecc71;
+  --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* --- 全域容器：啟動捲動捕捉 --- */
+.app-container {
+  height: 100vh;            /* 必須固定高度為視窗高 */
+  overflow-y: scroll;       /* 啟動垂直滾動 */
+  scroll-snap-type: y mandatory; /* 強制垂直吸附 */
+  scroll-behavior: smooth;  /* 平滑滾動 */
+  background-color: var(--primary-bg);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* --- 捲動區塊通用定義 --- */
+.snap-section {
+  width: 100%;
+  height: 100vh;            /* 每一區塊強制滿版 */
+  scroll-snap-align: start; /* 吸附對齊頂部 */
+  scroll-snap-stop: always; /* 防止一次跳過多個區塊 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* --- 1. 自我介紹區塊 (Hero Section) --- */
+.hero-section {
+  background-size: cover;
+  background-position: 50% 60%; 
+  background-repeat: no-repeat;
+  background-attachment: scroll; 
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.hero-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.title-area h1 {
+  font-size: 3.5rem;
+  letter-spacing: 4px;
+  margin: 0;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
+  max-width: 750px;
+}
+
+/* --- 2. 內容包裝區 (技能與聯絡共用) --- */
+.content-wrapper {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 35px;
+  border-left: 4px solid var(--accent-gold);
+  padding-left: 15px;
+  letter-spacing: 2px;
+}
+
+/* --- 3. 技能網格系統 --- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.icon-box {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--card-bg);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.skill-icon-img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.skill-item:hover {
+  transform: translateY(-8px);
+}
+
+.skill-item:hover .icon-box {
+  border-color: var(--accent-gold);
+  background: rgba(201, 160, 99, 0.1);
+}
+
+/* --- 4. 聯絡區塊 --- */
+.contact-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-card p {
+  margin: 12px 0;
+  font-size: 1.1rem;
+}
+
+.contact-card strong {
+  color: var(--accent-gold);
+}
+
+/* --- 5. 音樂播放按鈕 (修正形狀版) --- */
+.music-play-btn {
+  position: fixed; 
+  right: 30px;
+  bottom: 30px;
+  width: 65px;
+  height: 65px;
+  background-color: var(--spotify-green);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;    
+  justify-content: center; 
+  box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 0; 
+}
+
+.music-play-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(46, 204, 113, 0.6);
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 20px solid white;
+  margin-left: 6px; /* 修正視覺重心 */
+}
+
+.pause-icon {
+  display: flex;
+  gap: 6px;
+}
+
+.pause-icon::before,
+.pause-icon::after {
+  content: "";
+  width: 6px;
+  height: 22px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* --- 6. 響應式調整 --- */
+@media (max-width: 600px) {
+  .app-container {
+    scroll-snap-type: none; 
+    height: auto;
+  }
+  .snap-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 60px 0;
+  }
+  .hero-header { flex-direction: column-reverse; text-align: center; }
+  .title-area h1 { font-size: 2.4rem; }
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+  
+  .music-play-btn {
+    width: 55px;
+    height: 55px;
+    right: 20px;
+    bottom: 20px;
+  }
+  .play-icon {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid white;
+  }
+}
