@@ -11,6 +11,7 @@ import cssImg from './assets/css.jpg';
 import javascriptImg from './assets/javascript.jpg';  
 import awsImg from './assets/aws.jpg';    
 import reactImg from './assets/react.jpg'; 
+import figmaImg from './assets/figma.jpg';
 
 // --- 技能資料定義 ---
 const SKILLS_LIST = [
@@ -20,6 +21,7 @@ const SKILLS_LIST = [
   { id: 'cursor', name: 'Cursor', label: 'Cursor', color: '#fff', type: 'text' },
   { id: 'aws', name: 'AWS', icon: awsImg, type: 'image' },
   { id: 'react', name: 'React', icon: reactImg, type: 'image' },
+  { id: 'figma', name: 'Figma', icon: figmaImg, type: 'image' },
   { id: 'upcoming', name: '敬請期待', label: '敬請期待', color: '#c9a063', type: 'text', hideLabel: true },
 ];
 
