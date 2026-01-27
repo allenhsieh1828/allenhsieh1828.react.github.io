@@ -145,12 +145,25 @@
   background: rgba(201, 160, 99, 0.1);
 }
 
-/* --- 4. 聯絡區塊 --- */
+/* --- 4 & 5. 卡片通用特效 (聯絡我 & 作品專案) --- */
 .contact-card {
   background: var(--card-bg);
   padding: 30px;
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 統一發光與浮起特效 */
+.contact-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(201, 160, 99, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 35px rgba(201, 160, 99, 0.15), 
+              0 0 15px rgba(201, 160, 99, 0.1);
 }
 
 .contact-card p {
@@ -162,7 +175,35 @@
   color: var(--accent-gold);
 }
 
-/* --- 5. 音樂播放按鈕 (修正形狀版) --- */
+/* 作品卡片專屬內元素調整 */
+.project-card h3 {
+  transition: color 0.3s ease;
+}
+
+.project-card:hover h3 {
+  text-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+}
+
+.project-card a {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.project-card a:hover {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
+.project-card span {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover span {
+  border-color: var(--accent-gold);
+  background: rgba(201, 160, 99, 0.2);
+}
+
+/* --- 6. 音樂播放按鈕 --- */
 .music-play-btn {
   position: fixed; 
   right: 30px;
@@ -193,7 +234,7 @@
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   border-left: 20px solid white;
-  margin-left: 6px; /* 修正視覺重心 */
+  margin-left: 6px; 
 }
 
 .pause-icon {
@@ -210,7 +251,7 @@
   border-radius: 2px;
 }
 
-/* --- 6. 響應式調整 --- */
+/* --- 7. 響應式調整 --- */
 @media (max-width: 600px) {
   .app-container {
     scroll-snap-type: none; 
@@ -230,10 +271,5 @@
     height: 55px;
     right: 20px;
     bottom: 20px;
-  }
-  .play-icon {
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 16px solid white;
   }
 }

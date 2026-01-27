@@ -25,6 +25,18 @@ const SKILLS_LIST = [
   { id: 'upcoming', name: '敬請期待', label: '敬請期待', color: '#c9a063', type: 'text', hideLabel: true },
 ];
 
+// --- 作品專案資料定義 ---
+const PROJECTS_LIST = [
+  {
+    id: 'todo-finance',
+    title: '待辦清單與財務管理系統',
+    desc: '基於 React 開發的代辦事項結合財務管理系統。整合日曆規劃、動態數據圖表分析，並針對行動裝置進行適配優化，展現對使用者體驗與響應式佈局的掌握。',
+    tech: ['React', 'Framer Motion', 'Lucide-React', 'Vite'],
+    link: 'https://allenhsieh1828.github.io/to-do-list/',
+    github: 'https://github.com/allenhsieh1828/to-do-list'
+  }
+];
+
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
@@ -95,6 +107,35 @@ function App() {
         </div>
       </section>
 
+      {/* --- 新增：作品專案區塊 (Projects Section) --- */}
+      <section className="snap-section">
+        <div className="content-wrapper">
+          <h2 className="section-title">作品專案</h2>
+          <div className="projects-list">
+            {PROJECTS_LIST.map((proj) => (
+              <div key={proj.id} className="contact-card project-card" style={{ textAlign: 'left', marginBottom: '20px' }}>
+                <h3 style={{ color: '#EAB308', marginBottom: '10px' }}>{proj.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: '#CBD5E1', marginBottom: '15px', lineHeight: '1.6' }}>
+                  {proj.desc}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+                  {proj.tech.map(t => (
+                    <span key={t} style={{ 
+                      fontSize: '0.7rem', backgroundColor: 'rgba(234,179,8,0.1)', 
+                      color: '#EAB308', padding: '2px 10px', borderRadius: '15px', border: '1px solid rgba(234,179,8,0.3)' 
+                    }}>{t}</span>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', gap: '15px' }}>
+                  <a href={proj.link} target="_blank" rel="noreferrer" style={{ color: '#EAB308', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.9rem' }}>🔗 觀看成品</a>
+                  <a href={proj.github} target="_blank" rel="noreferrer" style={{ color: '#94A3B8', textDecoration: 'none', fontSize: '0.9rem' }}>Source Code</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* --- 第三區塊：聯絡我 (Contact Section) --- */}
       <section className="snap-section">
         <div className="content-wrapper">
@@ -106,7 +147,7 @@ function App() {
         </div>
       </section>
 
-      {/* 懸浮音樂按鈕：位於 snap 容器外，不參與捲動吸附 */}
+      {/* 懸浮音樂按鈕 */}
       <button className="music-play-btn" onClick={handleMusicClick} aria-label="播放音樂控制">
         {isPlaying ? <div className="pause-icon"></div> : <div className="play-icon"></div>}
       </button>
