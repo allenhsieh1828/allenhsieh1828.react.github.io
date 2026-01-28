@@ -25,5 +25,13 @@ export const PROJECTS_LIST = [
     tech: ['React', 'Framer Motion', 'Lucide-React', 'Vite'],
     link: 'https://allenhsieh1828.github.io/to-do-list/',
     github: 'https://github.com/allenhsieh1828/to-do-list'
+  },
+  {
+    id: 'fitstack',
+    title: '互動式簽到紀錄系統',
+    desc: '基於 React 開發的互動式簽到系統。整合實時狀態監測與數據儲存功能，提供直觀的用戶介面，並針對不同螢幕尺寸進行響應式佈局優化，確保在行動端與桌機端皆能流暢操作。',
+    tech: ['React', 'CSS3/SCSS', 'Firebase','Framer Motion', 'Lucide-React', 'Vite'],
+    link: 'https://allenhsieh1828.github.io/fitstack/',
+    github: 'https://github.com/allenhsieh1828/fitstack'
   }
 ];
