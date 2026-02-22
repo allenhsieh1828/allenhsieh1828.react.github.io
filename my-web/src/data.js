@@ -18,6 +18,14 @@ export const SKILLS_LIST = [
 ];
 
 export const PROJECTS_LIST = [
+    {
+    id: 'picklematch',
+    title: '匹克球媒合平台',
+    desc: '是一個現代化的匹克球社交媒合平台，讓運動愛好者能夠輕鬆發掘、參加或舉辦本地球局。整合即時資料同步、無縫使用者體驗與企業級安全機制，提供社區驅動的球類運動新體驗',
+    tech: ['Next.js', 'React', 'TypeScript','Tailwind CSS', 'Lucide-React', 'Supabase', 'SQL'],
+    link: 'https://picklematch-m56p.vercel.app',
+    github: 'https://github.com/allenhsieh1828/picklematch'
+  },
   {
     id: 'todo-finance',
     title: '待辦清單與財務管理系統',
